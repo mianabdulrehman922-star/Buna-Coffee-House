@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buna Coffee House — Johar Town, Lahore</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        espresso: {
+                            DEFAULT: '#2C1810',
+                            dark: '#1C0F0A',
+                            light: '#3D2318'
+                        },
+                        cream: {
+                            DEFAULT: '#FDFBF7',
+                            soft: '#F7EBE1',
+                            dark: '#EFE6DD'
+                        },
+                        caramel: {
+                            DEFAULT: '#C67C4E',
+                            hover: '#B06B3E',
+                            light: '#D4A373',
+                            subtle: '#F4ECE4'
+                        },
+                        charcoal: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FDFBF7;
+            color: #1A1A1A;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2C1810;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C67C4E;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4A373;
+        }
+
+        /* Glassmorphism Navigation */
+        .nav-glass {
+            background: rgba(44, 24, 16, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Hero Dark Overlay Gradient */
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(28, 15, 10, 0.75) 0%, rgba(44, 24, 16, 0.85) 100%);
+        }
+
+        /* Smooth Reveal Animation Classes */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-element.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Card Hover Glow */
+        .hover-card-glow {
+            transition: all 0.4s ease;
+        }
+        .hover-card-glow:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px rgba(198, 124, 78, 0.25);
+        }
+
+        /* Lightbox Image Transition */
+        #lightbox-img {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        /* Logo Coffee Steam Effect */
+        @keyframes steam {
+            0% { transform: translateY(0) scaleX(1); opacity: 0; }
+            50% { opacity: 0.6; }
+            100% { transform: translateY(-10px) scaleX(1.3); opacity: 0; }
+        }
+        .steam-line {
+            animation: steam 2s infinite ease-out;
+        }
+        .steam-line-delay {
+            animation: steam 2s infinite ease-out 0.8s;
+        }
+    </style>
+</head>
+<body class="text-charcoal selection:bg-caramel selection:text-white">
+
+    <!-- NAVIGATION BAR -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-glass text-cream transition-all duration-300 border-b border-caramel/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Stylized Buna Brand Logo -->
+                <a href="#home" class="flex items-center space-x-3 group">
+                    <div class="relative w-10 h-10 rounded-full bg-caramel flex items-center justify-center text-espresso font-bold shadow-md group-hover:bg-caramel-light transition-colors">
+                        <!-- Steam Icon SVG -->
+                        <div class="absolute -top-2 flex space-x-1">
+                            <span class="w-1 h-2 bg-caramel-light rounded-full steam-line"></span>
+                            <span class="w-1 h-3 bg-caramel rounded-full steam-line-delay"></span>
+                        </div>
+                        <i class="fa-solid fa-mug-hot text-lg text-cream"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif text-2xl font-bold tracking-wide text-cream group-hover:text-caramel-light transition-colors">BUNA</span>
+                        <span class="text-[10px] tracking-[0.25em] text-caramel-light uppercase -mt-1 font-sans">Coffee House • Lahore</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-sm font-medium hover:text-caramel transition-colors py-1 border-b-2 border-transparent">Home</a>
+                    <a href="#story" class="nav-link text-sm font-medium hover:text-caramel transition-colors py-1 border-b-2 border-transparent">Our Story</a>
+                    <a href="#menu" class="nav-link text-sm font-medium hover:text-caramel transition-colors py-1 border-b-2 border-transparent">Menu</a>
+                    <a href="#experiences" class="nav-link text-sm font-medium hover:text-caramel transition-colors py-1 border-b-2 border-transparent">Experiences</a>
+                    <a href="#gallery" class="nav-link text-sm font-medium hover:text-caramel transition-colors py-1 border-b-2 border-transparent">Gallery</a>
+                    <a href="#visit" class="nav-link text-sm font-medium hover:text-caramel transition-colors py-1 border-b-2 border-transparent">Visit Us</a>
+                </div>
+
+                <!-- Desktop CTA Button -->
+                <div class="hidden md:block">
+                    <a href="#contact" class="px-5 py-2.5 rounded-full bg-caramel hover:bg-caramel-hover text-cream text-xs font-semibold uppercase tracking-wider transition-all transform hover:-translate-y-0.5 shadow-md">
+                        Get In Touch
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="p-2 rounded-lg text-cream hover:text-caramel focus:outline-none" aria-label="Toggle menu">
+                        <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-espresso-dark border-b border-caramel/20 px-4 pt-3 pb-6 space-y-3 transition-all duration-300">
+            <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-cream hover:bg-espresso hover:text-caramel">Home</a>
+            <a href="#story" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-cream hover:bg-espresso hover:text-caramel">Our Story</a>
+            <a href="#menu" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-cream hover:bg-espresso hover:text-caramel">Interactive Menu</a>
+            <a href="#experiences" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-cream hover:bg-espresso hover:text-caramel">Coffee Experiences</a>
+            <a href="#gallery" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-cream hover:bg-espresso hover:text-caramel">Gallery</a>
+            <a href="#visit" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-cream hover:bg-espresso hover:text-caramel">Visit Us</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-caramel hover:bg-espresso">Contact & Inquiries</a>
+        </div>
+    </nav>
+
+    <!-- HOMEPAGE HERO SECTION -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=2000&q=80" 
+                 alt="Specialty Coffee Dripping" 
+                 class="w-full h-full object-cover object-center scale-105 transform hover:scale-100 transition-transform duration-10000"
+                 onerror="this.src='https://placehold.co/1920x1080/2C1810/FFFFFF?text=Buna+Coffee+House+Lahore'">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-cream py-20 reveal-element active">
+            
+            <!-- Subtitle Badge -->
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-caramel/20 border border-caramel/40 text-caramel-light text-xs font-medium uppercase tracking-widest mb-8 backdrop-blur-sm">
+                <i class="fa-solid fa-location-dot text-caramel"></i>
+                <span>Johar Town • Opposite Emporium Mall</span>
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
+                Your Daily Ritual, <br class="hidden sm:block"/>
+                <span class="italic font-normal text-caramel-light">Brewed Better.</span>
+            </h1>
+
+            <!-- Hero Description -->
+            <p class="max-w-2xl mx-auto text-lg sm:text-xl text-cream/90 font-light mb-10 leading-relaxed">
+                Discover great coffee, comforting flavours, and a welcoming space for your everyday coffee moments in the heart of Lahore.
+            </p>
+
+            <!-- Call To Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-full bg-caramel hover:bg-caramel-hover text-cream font-semibold text-sm tracking-wider uppercase transition-all transform hover:-translate-y-1 shadow-lg shadow-caramel/30 flex items-center justify-center space-x-3">
+                    <span>Explore Our Menu</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <a href="#visit" class="w-full sm:w-auto px-8 py-4 rounded-full bg-transparent border-2 border-cream/40 hover:border-cream hover:bg-cream/10 text-cream font-semibold text-sm tracking-wider uppercase transition-all flex items-center justify-center space-x-3 backdrop-blur-xs">
+                    <i class="fa-solid fa-compass text-caramel-light"></i>
+                    <span>Find Our Café</span>
+                </a>
+            </div>
+
+            <!-- Quick Specs Strip -->
+            <div class="mt-16 pt-10 border-t border-cream/15 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div>
+                    <span class="block text-2xl font-serif font-bold text-caramel-light">100%</span>
+                    <span class="text-xs text-cream/70 uppercase tracking-wider">Arabica Beans</span>
+                </div>
+                <div>
+                    <span class="block text-2xl font-serif font-bold text-caramel-light">Artisanal</span>
+                    <span class="text-xs text-cream/70 uppercase tracking-wider">Brew Techniques</span>
+                </div>
+                <div>
+                    <span class="block text-2xl font-serif font-bold text-caramel-light">Cozy</span>
+                    <span class="text-xs text-cream/70 uppercase tracking-wider">Seating & Ambiance</span>
+                </div>
+                <div>
+                    <span class="block text-2xl font-serif font-bold text-caramel-light">Fresh</span>
+                    <span class="text-xs text-cream/70 uppercase tracking-wider">Daily Pastries</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <a href="#story" class="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-cream/60 hover:text-caramel transition-colors animate-bounce">
+            <i class="fa-solid fa-chevron-down text-xl"></i>
+        </a>
+    </section>
+
+    <!-- OUR STORY SECTION -->
+    <section id="story" class="py-24 bg-cream relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Story Visual Content -->
+                <div class="lg:col-span-6 relative reveal-element">
+                    <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80" 
+                             alt="Cozy Coffee House Interior" 
+                             class="w-full h-[450px] object-cover hover:scale-105 transition-transform duration-700"
+                             onerror="this.src='https://placehold.co/800x600/2C1810/FFFFFF?text=Buna+Cafe+Interior'">
+                    </div>
+                    <!-- Secondary Accent Image -->
+                    <div class="hidden sm:block absolute -bottom-8 -right-8 w-56 h-56 rounded-2xl overflow-hidden border-4 border-cream shadow-xl z-20">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80" 
+                             alt="Pour over coffee preparation" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/400x400/C67C4E/FFFFFF?text=Coffee+Brewing'">
+                    </div>
+                    <!-- Decorative Badge -->
+                    <div class="absolute -top-6 -left-6 w-28 h-28 rounded-full bg-caramel text-cream p-4 flex flex-col items-center justify-center text-center shadow-lg z-20">
+                        <i class="fa-solid fa-heart text-lg mb-1"></i>
+                        <span class="text-[11px] font-bold leading-tight uppercase tracking-wider">Crafted With Care</span>
+                    </div>
+                </div>
+
+                <!-- Story Text Content -->
+                <div class="lg:col-span-6 space-y-6 reveal-element">
+                    <div class="inline-flex items-center space-x-2 text-caramel font-semibold text-xs tracking-widest uppercase">
+                        <span class="w-8 h-0.5 bg-caramel"></span>
+                        <span>Welcome to Buna</span>
+                    </div>
+
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold text-espresso leading-tight">
+                        More Than Coffee. <br/>
+                        <span class="italic text-caramel">A Moment for Yourself.</span>
+                    </h2>
+
+                    <p class="text-charcoal/80 text-base sm:text-lg leading-relaxed font-light">
+                        At Buna Coffee House, coffee is an experience to be savoured. Whether you are starting your morning with a bold espresso, finding a quiet corner to focus, or sharing laughs over an iced latte with friends, we offer a warm refuge from the busy city pulse of Johar Town.
+                    </p>
+
+                    <p class="text-charcoal/70 text-sm sm:text-base leading-relaxed">
+                        Every cup is crafted with meticulously selected beans, rich comforting milk textures, and artisanal precision. Paired with our selection of fresh bakery offerings, Buna is designed to be your favorite daily stop.
+                    </p>
+
+                    <!-- Feature Highlights -->
+                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-cream-dark">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-9 h-9 rounded-full bg-caramel/10 text-caramel flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-seedling"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-espresso text-sm">Ethical Sourcing</h4>
+                                <p class="text-xs text-charcoal/60">Selected premium Arabica standard</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-9 h-9 rounded-full bg-caramel/10 text-caramel flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-smile"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-espresso text-sm">Warm Hospitality</h4>
+                                <p class="text-xs text-charcoal/60">Welcoming community vibes</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="#visit" class="inline-flex items-center space-x-2 text-caramel hover:text-espresso font-semibold text-sm transition-colors group">
+                            <span>Visit us opposite Emporium Mall</span>
+                            <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE COFFEE MENU SECTION -->
+    <section id="menu" class="py-24 bg-espresso text-cream relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12 reveal-element">
+                <span class="text-caramel-light font-semibold text-xs tracking-widest uppercase block mb-2">Taste The Craft</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold mb-4">Interactive Menu</h2>
+                <p class="text-cream/70 text-sm sm:text-base font-light">
+                    Explore our curated offerings. Select a category below to filter our coffee, beverages, and delectable treats.
+                </p>
+                <div class="mt-3 text-[11px] text-caramel-light/80 italic">
+                    * Note: Menu items & sample prices are presented for demonstration purposes. Final menu subject to cafe confirmation.
+                </div>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="flex items-center justify-start md:justify-center overflow-x-auto pb-6 mb-8 gap-2 no-scrollbar reveal-element">
+                <button class="menu-tab px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap bg-caramel text-cream shadow-md" data-category="all">
+                    All Items
+                </button>
+                <button class="menu-tab px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap bg-espresso-light text-cream/70 hover:text-cream hover:bg-caramel/30" data-category="espresso">
+                    Espresso & Black
+                </button>
+                <button class="menu-tab px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap bg-espresso-light text-cream/70 hover:text-cream hover:bg-caramel/30" data-category="hot">
+                    Hot Coffee
+                </button>
+                <button class="menu-tab px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap bg-espresso-light text-cream/70 hover:text-cream hover:bg-caramel/30" data-category="iced">
+                    Iced Coffee
+                </button>
+                <button class="menu-tab px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap bg-espresso-light text-cream/70 hover:text-cream hover:bg-caramel/30" data-category="signature">
+                    Signature
+                </button>
+                <button class="menu-tab px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap bg-espresso-light text-cream/70 hover:text-cream hover:bg-caramel/30" data-category="tea">
+                    Tea & Others
+                </button>
+                <button class="menu-tab px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap bg-espresso-light text-cream/70 hover:text-cream hover:bg-caramel/30" data-category="desserts">
+                    Desserts & Bakery
+                </button>
+                <button class="menu-tab px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap bg-espresso-light text-cream/70 hover:text-cream hover:bg-caramel/30" data-category="snacks">
+                    Snacks
+                </button>
+            </div>
+
+            <!-- Menu Grid Container -->
+            <div id="menu-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Javascript will populate items dynamically based on filter -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FEATURED COFFEE EXPERIENCES SECTION -->
+    <section id="experiences" class="py-24 bg-cream-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal-element">
+                <span class="text-caramel font-semibold text-xs tracking-widest uppercase block mb-2">Tailored To Your Mood</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-espresso mb-4">Find Your Perfect Cup</h2>
+                <p class="text-charcoal/70 text-sm sm:text-base font-light">
+                    Whether you need a morning boost, a soothing afternoon drink, or a sweet pairing, discover your ideal coffee mood.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Experience Card 1 -->
+                <div class="bg-cream rounded-2xl p-6 shadow-md border border-caramel/10 hover-card-glow text-center flex flex-col items-center reveal-element">
+                    <div class="w-20 h-20 rounded-full bg-espresso text-caramel flex items-center justify-center text-3xl mb-6 shadow-md">
+                        <i class="fa-solid fa-mug-saucer"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-espresso mb-2">Rich & Bold</h3>
+                    <p class="text-xs text-charcoal/70 leading-relaxed mb-4">
+                        Deep roasted espresso profiles with notes of dark cocoa and toasted hazelnut for true coffee purists.
+                    </p>
+                    <span class="mt-auto inline-block text-[11px] font-bold tracking-wider text-caramel uppercase">Ideal for early mornings</span>
+                </div>
+
+                <!-- Experience Card 2 -->
+                <div class="bg-cream rounded-2xl p-6 shadow-md border border-caramel/10 hover-card-glow text-center flex flex-col items-center reveal-element">
+                    <div class="w-20 h-20 rounded-full bg-caramel text-cream flex items-center justify-center text-3xl mb-6 shadow-md">
+                        <i class="fa-solid fa-cloud"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-espresso mb-2">Smooth & Creamy</h3>
+                    <p class="text-xs text-charcoal/70 leading-relaxed mb-4">
+                        Velvety micro-foamed milk infused with smooth espresso for a comforting, balanced sip every time.
+                    </p>
+                    <span class="mt-auto inline-block text-[11px] font-bold tracking-wider text-caramel uppercase">Perfect for cozy chats</span>
+                </div>
+
+                <!-- Experience Card 3 -->
+                <div class="bg-cream rounded-2xl p-6 shadow-md border border-caramel/10 hover-card-glow text-center flex flex-col items-center reveal-element">
+                    <div class="w-20 h-20 rounded-full bg-espresso-light text-caramel-light flex items-center justify-center text-3xl mb-6 shadow-md">
+                        <i class="fa-solid fa-glass-water-droplet"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-espresso mb-2">Chilled & Refreshing</h3>
+                    <p class="text-xs text-charcoal/70 leading-relaxed mb-4">
+                        Poured over ice with signature syrups or condensed milk to cool down hot afternoons in Johar Town.
+                    </p>
+                    <span class="mt-auto inline-block text-[11px] font-bold tracking-wider text-caramel uppercase">Sunny day pick-me-up</span>
+                </div>
+
+                <!-- Experience Card 4 -->
+                <div class="bg-cream rounded-2xl p-6 shadow-md border border-caramel/10 hover-card-glow text-center flex flex-col items-center reveal-element">
+                    <div class="w-20 h-20 rounded-full bg-caramel-light text-espresso flex items-center justify-center text-3xl mb-6 shadow-md">
+                        <i class="fa-solid fa-cookie"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-espresso mb-2">Something Sweet</h3>
+                    <p class="text-xs text-charcoal/70 leading-relaxed mb-4">
+                        Decadent chocolate brownies, buttery croissants, and signature dessert coffee creations to indulge your sweet tooth.
+                    </p>
+                    <span class="mt-auto inline-block text-[11px] font-bold tracking-wider text-caramel uppercase">Treat yourself</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION WITH LIGHTBOX -->
+    <section id="gallery" class="py-24 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal-element">
+                <span class="text-caramel font-semibold text-xs tracking-widest uppercase block mb-2">Visual Moments</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-espresso mb-4">Coffee House Gallery</h2>
+                <p class="text-charcoal/70 text-sm sm:text-base font-light">
+                    Take a peak into the craft, texture, and cozy ambience at Buna Coffee House. Click any image to expand.
+                </p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+                
+                <div class="gallery-item group relative h-64 sm:h-80 rounded-2xl overflow-hidden cursor-pointer shadow-md reveal-element" data-index="0">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80" 
+                         alt="Freshly brewed espresso shot" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                         onerror="this.src='https://placehold.co/600x600/2C1810/FFFFFF?text=Espresso'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <span class="text-caramel-light text-xs font-semibold uppercase">Craftsmanship</span>
+                            <h4 class="text-cream font-serif text-lg font-bold">Precision Espresso Pull</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item group relative h-64 sm:h-80 rounded-2xl overflow-hidden cursor-pointer shadow-md reveal-element" data-index="1">
+                    <img src="https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=800&q=80" 
+                         alt="Artisanal Latte Art" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                         onerror="this.src='https://placehold.co/600x600/C67C4E/FFFFFF?text=Latte+Art'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <span class="text-caramel-light text-xs font-semibold uppercase">Barista Touch</span>
+                            <h4 class="text-cream font-serif text-lg font-bold">Pouring Soft Latte Art</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item group relative h-64 sm:h-80 rounded-2xl overflow-hidden cursor-pointer shadow-md reveal-element" data-index="2">
+                    <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=80" 
+                         alt="Iced Spanish Latte over ice" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                         onerror="this.src='https://placehold.co/600x600/2C1810/FFFFFF?text=Iced+Coffee'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <span class="text-caramel-light text-xs font-semibold uppercase">Cold Brews</span>
+                            <h4 class="text-cream font-serif text-lg font-bold">Chilled Spanish Latte</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item group relative h-64 sm:h-80 rounded-2xl overflow-hidden cursor-pointer shadow-md reveal-element" data-index="3">
+                    <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=800&q=80" 
+                         alt="Roasted coffee beans selection" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                         onerror="this.src='https://placehold.co/600x600/2C1810/FFFFFF?text=Coffee+Beans'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <span class="text-caramel-light text-xs font-semibold uppercase">Ingredients</span>
+                            <h4 class="text-cream font-serif text-lg font-bold">Freshly Roasted Beans</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item group relative h-64 sm:h-80 rounded-2xl overflow-hidden cursor-pointer shadow-md reveal-element" data-index="4">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" 
+                         alt="Fresh bakery pastries and brownies" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                         onerror="this.src='https://placehold.co/600x600/C67C4E/FFFFFF?text=Bakery'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <span class="text-caramel-light text-xs font-semibold uppercase">Bakery</span>
+                            <h4 class="text-cream font-serif text-lg font-bold">Fresh Croissants & Treats</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item group relative h-64 sm:h-80 rounded-2xl overflow-hidden cursor-pointer shadow-md reveal-element" data-index="5">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80" 
+                         alt="Cozy ambient cafe lighting" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                         onerror="this.src='https://placehold.co/600x600/2C1810/FFFFFF?text=Cafe+Ambiance'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <span class="text-caramel-light text-xs font-semibold uppercase">Atmosphere</span>
+                            <h4 class="text-cream font-serif text-lg font-bold">Warm Café Vibes</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4 backdrop-blur-md">
+        <button id="lightbox-close" class="absolute top-6 right-6 text-cream hover:text-caramel text-3xl focus:outline-none z-50">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <button id="lightbox-prev" class="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 text-cream/70 hover:text-caramel text-3xl focus:outline-none p-2">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button id="lightbox-next" class="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 text-cream/70 hover:text-caramel text-3xl focus:outline-none p-2">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        
+        <div class="max-w-4xl max-h-[85vh] p-2 flex flex-col items-center">
+            <img id="lightbox-img" src="" alt="Expanded View" class="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl">
+            <div id="lightbox-caption" class="text-cream text-center mt-4 font-serif text-lg font-medium"></div>
+        </div>
+    </div>
+
+    <!-- VISIT US SECTION -->
+    <section id="visit" class="py-24 bg-espresso text-cream relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Location Info Card -->
+                <div class="lg:col-span-5 space-y-6 reveal-element">
+                    <span class="text-caramel-light font-semibold text-xs tracking-widest uppercase block">Our Location</span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold leading-tight">
+                        Visit Buna Coffee House
+                    </h2>
+                    
+                    <p class="text-cream/80 text-sm sm:text-base font-light leading-relaxed">
+                        Conveniently located in Johar Town, right opposite Emporium Mall. Stop by for a quick takeaway brew or relax in our indoor seating area.
+                    </p>
+
+                    <!-- Address Box -->
+                    <div class="bg-espresso-light p-6 rounded-2xl border border-caramel/20 space-y-4">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-caramel/20 text-caramel flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-cream text-sm">Full Address</h4>
+                                <p class="text-xs text-cream/80 leading-relaxed mt-1">
+                                    254–255, opposite Emporium Mall, Block H-2, Phase 2, Johar Town, Lahore, 54000, Pakistan.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Directions CTA Button -->
+                        <div class="pt-2">
+                            <a href="https://maps.app.goo.gl/Jupp5QMMo1uRCPwC7" target="_blank" rel="noopener noreferrer" 
+                               class="w-full inline-flex items-center justify-center space-x-2 px-6 py-3 rounded-xl bg-caramel hover:bg-caramel-hover text-cream text-xs font-semibold uppercase tracking-wider transition-colors shadow-md">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                                <span>Get Directions on Google Maps</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Business Hours Table -->
+                    <div class="bg-espresso-light p-6 rounded-2xl border border-caramel/20">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-semibold text-cream text-sm flex items-center space-x-2">
+                                <i class="fa-regular fa-clock text-caramel"></i>
+                                <span>Business Hours</span>
+                            </h4>
+                            <span class="text-[10px] bg-caramel/20 text-caramel-light px-2 py-0.5 rounded-full uppercase tracking-wider font-semibold">Pending Confirmation</span>
+                        </div>
+                        
+                        <div class="space-y-2 text-xs text-cream/80">
+                            <div class="flex justify-between py-1 border-b border-cream/10">
+                                <span>Monday – Thursday</span>
+                                <span class="font-medium text-cream">8:00 AM – 11:00 PM [TBC]</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-cream/10">
+                                <span>Friday – Saturday</span>
+                                <span class="font-medium text-cream">8:00 AM – 12:00 Midnight [TBC]</span>
+                            </div>
+                            <div class="flex justify-between py-1">
+                                <span>Sunday</span>
+                                <span class="font-medium text-cream">9:00 AM – 11:00 PM [TBC]</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Google Maps Embedded Visual View -->
+                <div class="lg:col-span-7 h-[450px] rounded-3xl overflow-hidden border-2 border-caramel/30 shadow-2xl relative reveal-element">
+                    <!-- Embedded Responsive Map iframe -->
+                    <iframe 
+                        title="Buna Coffee House Lahore Location Map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.771691238917!2d74.2635!3d31.4688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391903f56e9c0a15%3A0x6b09935df68fae08!2sBuna%20Coffee%20House!5e0!3m2!1sen!2spk!4v1700000000000!5m2!1sen!2spk" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="w-full h-full grayscale opacity-85 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                    </iframe>
+                    <div class="absolute bottom-4 left-4 bg-espresso/90 backdrop-blur-md px-4 py-2 rounded-lg text-xs text-cream/90 flex items-center space-x-2 pointer-events-none">
+                        <i class="fa-solid fa-landmark text-caramel"></i>
+                        <span>Opposite Emporium Mall, Johar Town</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-24 bg-cream-soft">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal-element">
+                <span class="text-caramel font-semibold text-xs tracking-widest uppercase block mb-2">Get In Touch</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-espresso mb-4">Send Us A Message</h2>
+                <p class="text-charcoal/70 text-sm sm:text-base font-light">
+                    Have a question, feedback, or inquiry about private bookings? Reach out to us below.
+                </p>
+            </div>
+
+            <!-- Contact Form Card -->
+            <div class="bg-cream rounded-3xl p-8 sm:p-12 shadow-xl border border-caramel/15 reveal-element">
+                <form id="contact-form" class="space-y-6" novalidate>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Full Name -->
+                        <div>
+                            <label for="fullName" class="block text-xs font-semibold text-espresso uppercase tracking-wider mb-2">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required 
+                                   placeholder="e.g. Ali Ahmed"
+                                   class="w-full px-4 py-3 rounded-xl bg-cream-soft border border-caramel/20 focus:border-caramel focus:ring-2 focus:ring-caramel/20 focus:outline-none transition-colors text-sm">
+                            <span class="error-msg text-xs text-red-500 hidden mt-1">Please enter your name.</span>
+                        </div>
+
+                        <!-- Email Address -->
+                        <div>
+                            <label for="email" class="block text-xs font-semibold text-espresso uppercase tracking-wider mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required 
+                                   placeholder="e.g. ali@example.com"
+                                   class="w-full px-4 py-3 rounded-xl bg-cream-soft border border-caramel/20 focus:border-caramel focus:ring-2 focus:ring-caramel/20 focus:outline-none transition-colors text-sm">
+                            <span class="error-msg text-xs text-red-500 hidden mt-1">Please enter a valid email address.</span>
+                        </div>
+                    </div>
+
+                    <!-- Subject -->
+                    <div>
+                        <label for="subject" class="block text-xs font-semibold text-espresso uppercase tracking-wider mb-2">Subject *</label>
+                        <input type="text" id="subject" name="subject" required 
+                               placeholder="General Inquiry / Feedback / Catering"
+                               class="w-full px-4 py-3 rounded-xl bg-cream-soft border border-caramel/20 focus:border-caramel focus:ring-2 focus:ring-caramel/20 focus:outline-none transition-colors text-sm">
+                        <span class="error-msg text-xs text-red-500 hidden mt-1">Please enter a subject.</span>
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <label for="message" class="block text-xs font-semibold text-espresso uppercase tracking-wider mb-2">Message *</label>
+                        <textarea id="message" name="message" rows="5" required 
+                                  placeholder="Write your note or question here..."
+                                  class="w-full px-4 py-3 rounded-xl bg-cream-soft border border-caramel/20 focus:border-caramel focus:ring-2 focus:ring-caramel/20 focus:outline-none transition-colors text-sm"></textarea>
+                        <span class="error-msg text-xs text-red-500 hidden mt-1">Please write a message.</span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" 
+                            class="w-full py-4 rounded-xl bg-caramel hover:bg-caramel-hover text-cream font-semibold text-xs uppercase tracking-widest transition-all shadow-md flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Send Message</span>
+                    </button>
+                </form>
+
+                <!-- Status Feedback Alert Banner -->
+                <div id="form-feedback" class="hidden mt-6 p-4 rounded-xl text-sm leading-relaxed text-center"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-espresso-dark text-cream border-t border-caramel/20 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-cream/10">
+                
+                <!-- Brand Info Column -->
+                <div class="md:col-span-5 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-caramel flex items-center justify-center text-cream">
+                            <i class="fa-solid fa-mug-hot text-sm"></i>
+                        </div>
+                        <span class="font-serif text-2xl font-bold tracking-wide">BUNA COFFEE HOUSE</span>
+                    </div>
+                    <p class="text-cream/70 text-xs sm:text-sm leading-relaxed max-w-sm">
+                        Your daily ritual, brewed better. Premium specialty coffee, delicious bakery treats, and cozy ambiance in Johar Town, Lahore.
+                    </p>
+                </div>
+
+                <!-- Quick Navigation Links -->
+                <div class="md:col-span-3 space-y-3">
+                    <h4 class="text-caramel-light font-semibold text-xs uppercase tracking-wider">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-cream/80">
+                        <li><a href="#home" class="hover:text-caramel transition-colors">Home</a></li>
+                        <li><a href="#story" class="hover:text-caramel transition-colors">Our Story</a></li>
+                        <li><a href="#menu" class="hover:text-caramel transition-colors">Interactive Menu</a></li>
+                        <li><a href="#experiences" class="hover:text-caramel transition-colors">Coffee Experiences</a></li>
+                        <li><a href="#gallery" class="hover:text-caramel transition-colors">Gallery</a></li>
+                        <li><a href="#visit" class="hover:text-caramel transition-colors">Visit Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Location Quick Details -->
+                <div class="md:col-span-4 space-y-3">
+                    <h4 class="text-caramel-light font-semibold text-xs uppercase tracking-wider">Location & Directions</h4>
+                    <p class="text-xs text-cream/80 leading-relaxed">
+                        254–255, opposite Emporium Mall, Block H-2, Phase 2, Johar Town, Lahore, 54000, Pakistan.
+                    </p>
+                    <a href="https://maps.app.goo.gl/Jupp5QMMo1uRCPwC7" target="_blank" rel="noopener noreferrer" 
+                       class="inline-block text-xs text-caramel hover:underline font-medium">
+                        Open in Google Maps &rarr;
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-cream/50 space-y-4 sm:space-y-0">
+                <p>&copy; <span id="year"></span> Buna Coffee House — Lahore. All rights reserved.</p>
+                <p class="text-[11px]">Designed with care for specialty coffee lovers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back To Top Floating Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-caramel text-cream flex items-center justify-center shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-caramel-hover z-40" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up text-sm"></i>
+    </button>
+
+    <!-- JAVASCRIPT FUNCTIONALITY -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            /* -------------------------------------------------------------
+               1. MOBILE MENU TOGGLE
+            ------------------------------------------------------------- */
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                if (mobileMenu.classList.contains('hidden')) {
+                    menuIcon.classList.remove('fa-xmark');
+                    menuIcon.classList.add('fa-bars');
+                } else {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-xmark');
+                }
+            });
+
+            // Close mobile menu on link click
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('fa-xmark');
+                    menuIcon.classList.add('fa-bars');
+                });
+            });
+
+            /* -------------------------------------------------------------
+               2. BACK TO TOP BUTTON & SCROLL REVEAL OBSERVER
+            ------------------------------------------------------------- */
+            const backToTopBtn = document.getElementById('back-to-top');
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 400) {
+                    backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                    backToTopBtn.classList.add('opacity-100');
+                } else {
+                    backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                    backToTopBtn.classList.remove('opacity-100');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Scroll reveal animation using IntersectionObserver
+            const revealElements = document.querySelectorAll('.reveal-element');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealElements.forEach(el => observer.observe(el));
+
+            /* -------------------------------------------------------------
+               3. DEMO MENU DATA & FILTERING SYSTEM
+            ------------------------------------------------------------- */
+            const menuData = [
+                {
+                    id: 1,
+                    title: "Classic Espresso",
+                    category: "espresso",
+                    price: "PKR 450",
+                    isDemo: true,
+                    desc: "Rich, full-bodied double shot with golden crema.",
+                    img: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=500&q=80"
+                },
+                {
+                    id: 2,
+                    title: "Americano",
+                    category: "espresso",
+                    price: "PKR 550",
+                    isDemo: true,
+                    desc: "Double espresso diluted with hot water for a smooth finish.",
+                    img: "https://images.unsplash.com/photo-1551033406-611cf9a28f67?auto=format&fit=crop&w=500&q=80"
+                },
+                {
+                    id: 3,
+                    title: "Café Latte",
+                    category: "hot",
+                    price: "PKR 750",
+                    isDemo: true,
+                    desc: "Silky steamed milk poured over signature espresso.",
+                    img: "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=500&q=80"
+                },
+                {
+                    id: 4,
+                    title: "Cappuccino",
+                    category: "hot",
+                    price: "PKR 750",
+                    isDemo: true,
+                    desc: "Balanced layers of espresso, steamed milk, and deep foam.",
+                    img: "https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=500&q=80"
+                },
+                {
+                    id: 5,
+                    title: "Spanish Latte",
+                    category: "signature",
+                    price: "PKR 890",
+                    isDemo: true,
+                    desc: "Espresso with steamed milk and a touch of sweet condensed milk.",
+                    img: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=500&q=80"
+                },
+                {
+                    id: 6,
+                    title: "Iced Latte",
+                    category: "iced",
+                    price: "PKR 790",
+                    isDemo: true,
+                    desc: "Chilled milk over ice topped with a bold shot of espresso.",
+                    img: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=500&q=80"
+                },
+                {
+                    id: 7,
+                    title: "Mocha Delight",
+                    category: "signature",
+                    price: "PKR 890",
+                    isDemo: true,
+                    desc: "Espresso blended with rich dark chocolate and steamed milk.",
+                    img: "https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?auto=format&fit=crop&w=500&q=80"
+                },
+                {
+                    id: 8,
+                    title: "Signature Hot Chocolate",
+                    category: "tea",
+                    price: "PKR 750",
+                    isDemo: true,
+                    desc: "Creamy melted cocoa blend topped with velvety foam.",
+                    img: "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=500&q=80"
+                },
+                {
+                    id: 9,
+                    title: "Fudge Chocolate Brownie",
+                    category: "desserts",
+                    price: "PKR 490",
+                    isDemo: true,
+                    desc: "Warm gooey brownie with rich dark chocolate chunks.",
+                    img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=500&q=80"
+                },
+                {
+                    id: 10,
+                    title: "Butter Croissant",
+                    category: "desserts",
+                    price: "PKR 420",
+                    isDemo: true,
+                    desc: "Flaky, golden-baked classic French croissant.",
+                    img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=500&q=80"
+                },
+                {
+                    id: 11,
+                    title: "Club Sandwich Bites",
+                    category: "snacks",
+                    price: "PKR 850",
+                    isDemo: true,
+                    desc: "Layered chicken, fresh lettuce, egg, and house sauce.",
+                    img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=500&q=80"
+                },
+                {
+                    id: 12,
+                    title: "Organic Jasmine Green Tea",
+                    category: "tea",
+                    price: "PKR 450",
+                    isDemo: true,
+                    desc: "Fragrant, calming green tea leaves steeped to perfection.",
+                    img: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=500&q=80"
+                }
+            ];
+
+            const menuContainer = document.getElementById('menu-container');
+            const menuTabs = document.querySelectorAll('.menu-tab');
+
+            function renderMenu(category = 'all') {
+                menuContainer.innerHTML = '';
+                
+                const filtered = category === 'all' 
+                    ? menuData 
+                    : menuData.filter(item => item.category === category);
+
+                filtered.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = "bg-espresso-light rounded-2xl overflow-hidden border border-caramel/20 flex flex-col hover-card-glow";
+                    card.innerHTML = `
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="${item.img}" alt="${item.title}" 
+                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                 onerror="this.src='https://placehold.co/400x300/2C1810/FFFFFF?text=${encodeURIComponent(item.title)}'">
+                            <span class="absolute top-3 right-3 bg-espresso/80 text-caramel-light text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full backdrop-blur-xs border border-caramel/30">
+                                Demo Price
+                            </span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-lg font-bold text-cream">${item.title}</h3>
+                                <span class="text-caramel-light font-bold text-sm ml-2 whitespace-nowrap">${item.price}</span>
+                            </div>
+                            <p class="text-cream/70 text-xs leading-relaxed mb-4 flex-grow">${item.desc}</p>
+                            <div class="pt-3 border-t border-cream/10 flex justify-between items-center text-[10px] text-cream/50">
+                                <span>Subject to café availability</span>
+                                <i class="fa-solid fa-mug-saucer text-caramel"></i>
+                            </div>
+                        </div>
+                    `;
+                    menuContainer.appendChild(card);
+                });
+            }
+
+            // Tab Click Handler
+            menuTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    menuTabs.forEach(t => {
+                        t.classList.remove('bg-caramel', 'text-cream');
+                        t.classList.add('bg-espresso-light', 'text-cream/70');
+                    });
+                    this.classList.remove('bg-espresso-light', 'text-cream/70');
+                    this.classList.add('bg-caramel', 'text-cream');
+
+                    const category = this.getAttribute('data-category');
+                    renderMenu(category);
+                });
+            });
+
+            // Initial Menu Render
+            renderMenu('all');
+
+            /* -------------------------------------------------------------
+               4. GALLERY LIGHTBOX MODAL
+            ------------------------------------------------------------- */
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const lightboxPrev = document.getElementById('lightbox-prev');
+            const lightboxNext = document.getElementById('lightbox-next');
+
+            let currentGalleryIndex = 0;
+
+            const galleryData = Array.from(galleryItems).map(item => {
+                const img = item.querySelector('img');
+                const caption = item.querySelector('h4') ? item.querySelector('h4').textContent : '';
+                return { src: img.src, alt: img.alt, title: caption };
+            });
+
+            function openLightbox(index) {
+                currentGalleryIndex = index;
+                const data = galleryData[currentGalleryIndex];
+                lightboxImg.src = data.src;
+                lightboxImg.alt = data.alt;
+                lightboxCaption.textContent = data.title;
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                document.body.style.overflow = 'auto';
+            }
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const idx = parseInt(this.getAttribute('data-index'));
+                    openLightbox(idx);
+                });
+            });
+
+            lightboxClose.addEventListener('click', closeLightbox);
+
+            lightboxNext.addEventListener('click', function() {
+                currentGalleryIndex = (currentGalleryIndex + 1) % galleryData.length;
+                openLightbox(currentGalleryIndex);
+            });
+
+            lightboxPrev.addEventListener('click', function() {
+                currentGalleryIndex = (currentGalleryIndex - 1 + galleryData.length) % galleryData.length;
+                openLightbox(currentGalleryIndex);
+            });
+
+            // Keyboard navigation for Lightbox & Esc key
+            document.addEventListener('keydown', function(e) {
+                if (!lightbox.classList.contains('hidden')) {
+                    if (e.key === 'Escape') closeLightbox();
+                    if (e.key === 'ArrowRight') lightboxNext.click();
+                    if (e.key === 'ArrowLeft') lightboxPrev.click();
+                }
+            });
+
+            /* -------------------------------------------------------------
+               5. CONTACT FORM CLIENT-SIDE VALIDATION
+            ------------------------------------------------------------- */
+            const contactForm = document.getElementById('contact-form');
+            const feedbackBox = document.getElementById('form-feedback');
+
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                let isValid = true;
+                const inputs = contactForm.querySelectorAll('input[required], textarea[required]');
+
+                inputs.forEach(input => {
+                    const errorMsg = input.parentNode.querySelector('.error-msg');
+                    if (!input.value.trim()) {
+                        isValid = false;
+                        if (errorMsg) errorMsg.classList.remove('hidden');
+                        input.classList.add('border-red-500');
+                    } else {
+                        if (errorMsg) errorMsg.classList.add('hidden');
+                        input.classList.remove('border-red-500');
+                    }
+
+                    if (input.type === 'email' && input.value.trim()) {
+                        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailPattern.test(input.value.trim())) {
+                            isValid = false;
+                            if (errorMsg) errorMsg.classList.remove('hidden');
+                            input.classList.add('border-red-500');
+                        }
+                    }
+                });
+
+                if (isValid) {
+                    feedbackBox.className = "mt-6 p-4 rounded-xl text-xs sm:text-sm leading-relaxed text-center bg-emerald-100 border border-emerald-300 text-emerald-800 block";
+                    feedbackBox.innerHTML = `
+                        <i class="fa-solid fa-circle-check text-lg mb-1 block text-emerald-600"></i>
+                        <strong>Demo Submission Received!</strong><br/>
+                        Thank you for your message. Since this is a website template preview, no actual email has been dispatched. Connect a backend mailer service before production deployment.
+                    `;
+                    contactForm.reset();
+                } else {
+                    feedbackBox.className = "mt-6 p-4 rounded-xl text-xs sm:text-sm leading-relaxed text-center bg-red-100 border border-red-300 text-red-800 block";
+                    feedbackBox.innerHTML = `
+                        <i class="fa-solid fa-triangle-exclamation text-lg mb-1 block text-red-600"></i>
+                        Please complete all required fields correctly before submitting.
+                    `;
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>
